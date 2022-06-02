@@ -89,7 +89,11 @@ int handle_file_open(std::string filename, std::ifstream &inputFile, std::ofstre
 
 int main(int argc, char *argv[])
 {
-
+	if (argc != 2)
+	{
+		std::cout << "Usage: ./converter <filename.c>" << std::endl;
+		return 1;
+	}
 	std::string filename = argv[1];
 	std::ifstream inputFile;
 	std::ofstream outputFile;

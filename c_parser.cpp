@@ -15,7 +15,6 @@ void clean_up_line(std::string &str)
 	{
 		if (str[j] == '"')
 			while (str[++j] != '"');
-		
 		while((str[j] == '\t' || str[j] == ' '))
 			str.erase(str.begin() + j);	
 	}
@@ -27,15 +26,34 @@ void tokenise_declarations(std::string &str)
 	{
 		if (str[j] == '"')
 			while (str[++j] != '"');
+			// int
 		else if (str[j] == ' ' && str[j - 1] == 't' && str[j - 2] == 'n' && str[j - 3] == 'i')
 			str[j] = SPACE_REPLACEMENT;
-		else if (str[j] == ' ' && str[j - 1] == 'c' && str[j - 2] == 'h' && str[j - 3] == 'a' && str[j - 4] == 'r')
+			// char
+		else if (str[j] == ' ' && str[j - 1] == 'r' && str[j - 2] == 'a' && str[j - 3] == 'h' && str[j - 4] == 'c')
 			str[j] = SPACE_REPLACEMENT;
-		else if (str[j] == ' ' && str[j - 1] == 'f' && str[j - 2] == 'l' && str[j - 3] == 'o' && str[j - 4] == 'a' && str[j - 5] == 't')
+			// float
+		else if (str[j] == ' ' && str[j - 1] == 't' && str[j - 2] == 'a' && str[j - 3] == 'o' && str[j - 4] == 'l' && str[j - 5] == 'f')
 			str[j] = SPACE_REPLACEMENT;
-		else if (str[j] == ' ' && str[j - 1] == 'd' && str[j - 2] == 'o' && str[j - 3] == 'u' && str[j - 4] == 'b' && str[j - 5] == 'l' && str[j - 6] == 'e')
+			// double
+		else if (str[j] == ' ' && str[j - 1] == 'e' && str[j - 2] == 'l' && str[j - 3] == 'b' && str[j - 4] == 'u' && str[j - 5] == 'o' && str[j - 6] == 'd')
 			str[j] = SPACE_REPLACEMENT;
-	}
+			// short
+		else if (str[j] == ' ' && str[j - 1] == 't' && str[j - 2] == 'r' && str[j - 3] == 'o' && str[j - 4] == 'h' && str[j - 5] == 's')
+			str[j] = SPACE_REPLACEMENT;
+			// long
+		else if (str[j] == ' ' && str[j - 1] == 'g' && str[j - 2] == 'n' && str[j - 3] == 'o' && str[j - 4] == 'l')
+			str[j] = SPACE_REPLACEMENT;
+			// unsigned
+		else if (str[j] == ' ' && str[j - 1] == 'd' && str[j - 2] == 'e' && str[j - 3] == 'n' && str[j - 4] == 'g' && str[j - 5] == 'i' && str[j - 6] == 's' && str[j - 7] == 'n' && str[j - 8] == 'u')
+			str[j] = SPACE_REPLACEMENT;
+			// signed
+		else if (str[j] == ' ' && str[j - 1] == 'd' && str[j - 2] == 'e' && str[j - 3] == 'n' && str[j - 4] == 'g' && str[j - 5] == 'i' && str[j - 6] == 's')
+			str[j] = SPACE_REPLACEMENT;
+			// void
+		else if (str[j] == ' ' && str[j - 1] == 'd' && str[j - 2] == 'i' && str[j - 3] == 'o' && str[j - 4] == 'v')
+			str[j] = SPACE_REPLACEMENT;
+		}
 }
 
 void fix_declarations(std::string &str)

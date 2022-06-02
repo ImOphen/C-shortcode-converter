@@ -100,9 +100,7 @@ int main(int argc, char *argv[])
 		return 1;
 	for (std::string line; std::getline(inputFile, line);)
 	{
-		if (line.find("main()") != std::string::npos)
-			continue;
-		else if (contains(line, "include"))
+		if (contains(line, "include"))
 			includes.push_back(line);
 		else
 			other_lines.push_back(line);
@@ -110,7 +108,6 @@ int main(int argc, char *argv[])
 	//  includes arent necessary for linux, they will generate warnings tho
 	for (int i = 0; i < includes.size(); i++)
 		outputFile << includes[i] << std::endl;
-	outputFile << "main()";
 	for (int i = 0; i < other_lines.size(); i++)
 	{
 		tokenise_declarations(other_lines[i]);
